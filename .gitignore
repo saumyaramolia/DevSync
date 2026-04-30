@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# removing useless files for the repo
+.claude
+AGENTS.md
+CLAUDE.md
