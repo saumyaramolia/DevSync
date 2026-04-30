@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(robocopy \"D:\\\\Projects\\\\tmp-devsync\" \"D:\\\\Projects\\\\DevSync\" /E /XD \".git\" /XF \".env.local\" /NFL /NDL /NJH /NJS 2>&1; Write-Host \"Robocopy exit code: $LASTEXITCODE\")",
+      "Bash(npx shadcn@latest init --style new-york --base-color slate --yes)",
+      "Bash(npx shadcn@latest init --help)",
+      "Bash(npx shadcn@latest init -y)",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add card --yes)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(npx prisma *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -L http://localhost:3000/dashboard)",
+      "Bash(curl -s -I http://localhost:3000/dashboard)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/auth/get-session)",
+      "Bash(curl -s http://localhost:3000/api/auth/get-session)",
+      "Bash(curl -s \"http://localhost:3000/api/auth/error\")",
+      "Bash(node -e \"const {defineConfig} = require\\('prisma/config'\\); console.log\\(Object.keys\\(defineConfig.toString ? {} : defineConfig\\)\\)\")",
+      "Bash(xargs grep *)",
+      "Bash(PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION=\"yes\" npx prisma migrate reset --force)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/auth/signin/social)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X POST http://localhost:3000/api/auth/sign-in/social)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/auth/sign-in/social)",
+      "Bash(curl -s -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')",
+      "Bash(curl -sv -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')",
+      "Bash(curl -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')",
+      "Bash(echo \"---exit: $?\")",
+      "Bash(curl -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}' -w '\\\\nHTTP_STATUS: %{http_code}')",
+      "PowerShell(taskkill /PID 17656 /F)",
+      "Bash(curl -s -i -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')"
+    ]
+  }
+}
