@@ -28,7 +28,14 @@
       "Bash(echo \"---exit: $?\")",
       "Bash(curl -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}' -w '\\\\nHTTP_STATUS: %{http_code}')",
       "PowerShell(taskkill /PID 17656 /F)",
-      "Bash(curl -s -i -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')"
+      "Bash(curl -s -i -X POST http://localhost:3000/api/auth/sign-in/social -H 'Content-Type: application/json' -d '{\"provider\":\"google\",\"callbackURL\":\"/dashboard\"}')",
+      "Bash(xargs ls *)",
+      "Bash(npx shadcn *)",
+      "Bash(node -e \"const l = require\\('lowlight'\\); console.log\\(Object.keys\\(l\\)\\)\")",
+      "Bash(node -e \"require\\('@tiptap/suggestion'\\); console.log\\('ok'\\)\")",
+      "Bash(node -e \"const t = require\\('@tiptap/core'\\); console.log\\(require\\('./node_modules/@tiptap/core/package.json'\\).version\\)\")",
+      "Bash(node -e \"const { Editor } = require\\('@tiptap/core'\\); const StarterKit = require\\('@tiptap/starter-kit'\\).default; const e = new Editor\\({ extensions: [StarterKit] }\\); console.log\\(typeof e.commands.deleteRange\\)\")",
+      "WebSearch"
     ]
   }
 }

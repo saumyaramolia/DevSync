@@ -1,9 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
-import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { getDocumentsByWorkspace } from "@/actions/document";
 import { NewDocumentButton } from "@/components/new-document-button";
+import { DocumentListItem } from "@/components/document-list-item";
 
 export default async function WorkspacePage({
   params,
@@ -39,17 +39,7 @@ export default async function WorkspacePage({
       ) : (
         <ul className="flex flex-col gap-2">
           {documents.map((doc) => (
-            <li key={doc.id}>
-              <Link
-                href={`/workspace/${id}/document/${doc.id}`}
-                className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm transition hover:bg-slate-50"
-              >
-                <span className="font-medium text-slate-900">{doc.title}</span>
-                <span className="text-xs text-slate-400">
-                  {doc.updatedAt.toLocaleDateString()}
-                </span>
-              </Link>
-            </li>
+            <DocumentListItem key={doc.id} doc={doc} workspaceId={id} />
           ))}
         </ul>
       )}

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -128,3 +129,74 @@
     @apply font-sans;
   }
 }
+
+/* ── Lexical editor theme ─────────────────────────────────────────────────── */
+
+.editor-h1 { @apply text-3xl font-bold mt-6 mb-2 leading-tight; }
+.editor-h2 { @apply text-2xl font-semibold mt-5 mb-2 leading-tight; }
+.editor-h3 { @apply text-xl font-semibold mt-4 mb-1 leading-tight; }
+
+.editor-ul { @apply list-disc pl-6 my-2; }
+.editor-ol { @apply list-decimal pl-6 my-2; }
+.editor-li { @apply my-0.5; }
+.editor-nested-list { @apply pl-4 my-0; }
+
+.editor-bold        { @apply font-bold; }
+.editor-italic      { @apply italic; }
+.editor-strike      { @apply line-through; }
+.editor-underline   { @apply underline; }
+.editor-inline-code {
+  @apply font-mono text-sm bg-slate-100 text-rose-600 rounded px-1 py-0.5;
+}
+.editor-quote {
+  @apply border-l-4 border-slate-300 pl-4 my-2 italic text-slate-600;
+}
+.editor-hr { @apply border-slate-300 my-6; }
+.editor-paragraph { @apply my-1; }
+
+/* Code block — extra top padding reserves space for the floating toolbar */
+.editor-code {
+  display: block;
+  position: relative;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background-color: #18181b; /* zinc-900 */
+  padding: 2.5rem 1rem 1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875rem;
+  color: #e2e8f0; /* slate-200 */
+  tab-size: 2;
+  white-space: pre;
+  margin: 1rem 0;
+  caret-color: #e2e8f0;
+}
+
+/* Prism token colours (dark theme) */
+.editor-token-comment   { color: #6b7280; font-style: italic; }
+.editor-token-prolog    { color: #6b7280; }
+.editor-token-doctype   { color: #6b7280; }
+.editor-token-cdata     { color: #6b7280; }
+.editor-token-punctuation { color: #9ca3af; }
+.editor-token-property  { color: #f9a8d4; }
+.editor-token-tag       { color: #f9a8d4; }
+.editor-token-boolean   { color: #f9a8d4; }
+.editor-token-number    { color: #f9a8d4; }
+.editor-token-constant  { color: #f9a8d4; }
+.editor-token-symbol    { color: #f9a8d4; }
+.editor-token-deleted   { color: #f9a8d4; }
+.editor-token-selector  { color: #86efac; }
+.editor-token-attr      { color: #60a5fa; }
+.editor-token-string    { color: #86efac; }
+.editor-token-char      { color: #86efac; }
+.editor-token-builtin   { color: #86efac; }
+.editor-token-inserted  { color: #86efac; }
+.editor-token-operator  { color: #e5e7eb; }
+.editor-token-entity    { color: #e5e7eb; }
+.editor-token-url       { color: #e5e7eb; }
+.editor-token-variable  { color: #c4b5fd; }
+.editor-token-atrule    { color: #60a5fa; }
+.editor-token-function  { color: #fde047; }
+.editor-token-class-name { color: #fde047; }
+.editor-token-keyword   { color: #60a5fa; }
+.editor-token-regex     { color: #c4b5fd; }
+.editor-token-important { color: #f59e0b; font-weight: bold; }
