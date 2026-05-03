@@ -3,18 +3,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import {
-  $findMatchingParent,
-  $getNodeByKey,
-  $getSelection,
-  $isRangeSelection,
-} from "lexical";
+import { $findMatchingParent, $getNodeByKey, $getSelection, $isRangeSelection } from "lexical";
 import { CodeNode, $isCodeNode } from "@lexical/code";
 import { registerCodeHighlighting } from "@lexical/code-prism";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-markup";
 import { CheckIcon, CopyIcon } from "lucide-react";
 
 const LANGUAGES = [
-  { value: "", label: "Plain text" },
+  { value: "plain", label: "Plain text" },
   { value: "javascript", label: "JavaScript" },
   { value: "typescript", label: "TypeScript" },
   { value: "python", label: "Python" },
@@ -63,7 +64,7 @@ export function CodeBlockPlugin() {
     const rect = el.getBoundingClientRect();
     setToolbar({
       key: codeNode.getKey(),
-      language: codeNode.getLanguage() ?? "",
+      language: codeNode.getLanguage() ?? "plain",
       top: rect.top,
       right: window.innerWidth - rect.right,
     });
@@ -120,7 +121,10 @@ export function CodeBlockPlugin() {
         zIndex: 50,
       }}
       className="flex items-center gap-2 rounded-tr-lg bg-zinc-800 border-b border-zinc-700 px-3 py-1.5"
-      onMouseDown={(e) => e.preventDefault()}
+      onMouseDown={(e) => {
+        if ((e.target as HTMLElement).tagName === "SELECT") return;
+        e.preventDefault();
+      }}
     >
       <select
         value={toolbar.language}

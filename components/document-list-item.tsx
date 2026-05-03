@@ -13,6 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { updateDocumentTitle, deleteDocument } from "@/actions/document";
+import { getDocumentRef } from "@/lib/firebase";
+import { remove } from "firebase/database";
 
 interface DocumentListItemProps {
   doc: {
@@ -36,7 +38,10 @@ export function DocumentListItem({ doc, workspaceId }: DocumentListItemProps) {
 
   async function handleDelete() {
     if (!window.confirm(`Delete "${doc.title}"?`)) return;
-    await deleteDocument(doc.id);
+    await Promise.all([
+      deleteDocument(doc.id),
+      remove(getDocumentRef(doc.id)),
+    ]);
     router.refresh();
   }
 

@@ -62,7 +62,7 @@ const COMMANDS: CommandDef[] = [
       editor.update(() => {
         const sel = $getSelection();
         if ($isRangeSelection(sel))
-          $setBlocksType(sel, () => $createCodeNode());
+          $setBlocksType(sel, () => $createCodeNode("plain"));
       }),
   },
   {
@@ -142,28 +142,27 @@ export function SlashCommandPlugin() {
       menuRenderFn={(anchorRef, { selectedIndex, selectOptionAndCleanUp }) =>
         anchorRef.current && options.length > 0
           ? createPortal(
-              <div className="z-50 w-56 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
-                {options.map((opt, i) => (
-                  <button
-                    key={opt.key}
-                    ref={opt.setRefElement}
-                    className={`flex w-full flex-col px-3 py-2 text-left text-sm transition-colors hover:bg-slate-50 ${
-                      i === (selectedIndex ?? 0) ? "bg-slate-100" : ""
+            <div className="z-50 w-56 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg">
+              {options.map((opt, i) => (
+                <button
+                  key={opt.key}
+                  ref={opt.setRefElement}
+                  className={`flex w-full flex-col px-3 py-2 text-left text-sm transition-colors hover:bg-slate-50 ${i === (selectedIndex ?? 0) ? "bg-slate-100" : ""
                     }`}
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      selectOptionAndCleanUp(opt);
-                    }}
-                  >
-                    <span className="font-medium text-slate-900">{opt.key}</span>
-                    <span className="text-xs text-slate-400">
-                      {opt.description}
-                    </span>
-                  </button>
-                ))}
-              </div>,
-              anchorRef.current
-            )
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    selectOptionAndCleanUp(opt);
+                  }}
+                >
+                  <span className="font-medium text-slate-900">{opt.key}</span>
+                  <span className="text-xs text-slate-400">
+                    {opt.description}
+                  </span>
+                </button>
+              ))}
+            </div>,
+            anchorRef.current
+          )
           : null
       }
     />
